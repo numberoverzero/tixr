@@ -1,0 +1,12 @@
+region: local
+stage: dev
+
+server:
+  applicationConnectors:
+    - type: http
+      port: 8080
+
+logging:
+  level: INFO
+
+template: hello, %s!

@@ -1,0 +1,12 @@
+region: us-east-1
+stage: prod
+
+server:
+  applicationConnectors:
+    - type: http
+      port: 8090
+
+logging:
+  level: WARN
+
+template: hello from us-east-1, %s!

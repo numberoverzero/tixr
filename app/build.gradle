@@ -1,0 +1,26 @@
+plugins {
+    id 'application'
+}
+
+ext {
+    stage = findProperty("stage") ?: "dev"
+    region = findProperty("region") ?: "local"
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'junit:junit:4.+'
+
+    implementation 'io.dropwizard:dropwizard-core:2.1.1'
+}
+
+application {
+    mainClass = 'tixr.TixrApplication'
+}
+
+run {
+    args = ["server", "./src/dist/config-" + stage + "." + region + ".yml"]
+}
