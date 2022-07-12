@@ -18,7 +18,19 @@ public class GreetingResource {
     @GET()
     @Path("/{name}")
     @Produces(MediaType.TEXT_PLAIN)
-    public String getIt(@PathParam("name") String name) {
+    public String greet(@PathParam("name") String name) {
         return String.format(this.template, name);
+    }
+
+    @GET()
+    @Path("/reverse/{name}")
+    @Produces(MediaType.TEXT_PLAIN)
+    public String greetBackwards(@PathParam("name") String name) {
+        var msg = String.format(this.template, name);
+        var sb = new StringBuilder();
+        for(int i=msg.length()-1; i>=0; i--) {
+            sb.append(msg.charAt(i));
+        }
+        return sb.toString();
     }
 }
